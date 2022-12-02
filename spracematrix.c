@@ -142,4 +142,4 @@ int main()
     printf("Sum Matrix\n");
     display(*s3);
     return 0;
-}
+}///this program is not run completly please re write wia to watch video

@@ -327,16 +327,36 @@ int merge(struct node *p, struct node *q)
     if (q)
         last->next = q;
 }
+int isloop(struct node *f){
+    struct node *p,*q;
+    p=q=f;
+    do{
+        p=p->next;
+        q=q->next;
+        q=q?q->next:q;
+        
+    }while(p && q && p!=q);
+    if(p==q)
+    return 1;
+    else 
+    return 0;
+}
 int main()
 {
     // struct node *teamp;
-    // int A[] = {3, 4, 9, 10, 15};
-    // create(A, 5);
-    int A[] = {10, 20, 40, 50, 60};
-    int B[] = {5, 8, 15, 25, 30, 32};
-    create1(A, 5);
-    create2(B, 6);
-    merge(first, second);
+     int A[] = {3, 4, 9, 10, 15};
+     create1(A, 5);
+     struct node *t1,*t2;
+     
+     t1=first->next->next;
+     t2=first->next->next->next->Znext;
+     t2->next=t1;
+     printf("%d\n",isloop(first));
+    // int A[] = {10, 20, 40, 50, 60};
+    // int B[] = {5, 8, 15, 25, 30, 32};
+    // create1(A, 5);
+    // create2(B, 6);
+    // merge(first, second);
     // reverse3(NULL,first);
     // removeduplicate(first);
     // printf("%d\n",issorted(first));
@@ -350,8 +370,9 @@ int main()
     //   printf("%d\n", teamp->data);
     //  sortinsert(first,5);
     //  printf("%d\n", sortinsert(first, 5));//it is not run
-    display(third);
+    //display(third);
     // RDisplay(first);
+    
     return 0;
 }
 // r meaning is recursion it is solved by recursion.

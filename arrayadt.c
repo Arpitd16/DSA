@@ -208,8 +208,7 @@ struct array *merge(struct array *arr1, struct array
 {
     int i, j, k;
     i = j = k = 0;
-    struct array *arr3 = (struct array
-                              *)malloc(sizeof(struct array));
+    struct array *arr3 = (struct array *)malloc(sizeof(struct array));
     while (i < arr1->length && j < arr2->length)
     {
         if (arr1->A[i] < arr2->A[j])
@@ -225,8 +224,7 @@ struct array *merge(struct array *arr1, struct array
     arr3->size = 10;
     return arr3;
 }
-struct array *uniono(struct array *arr1, struct array
-                                             *arr2)
+struct array *uniono(struct array *arr1, struct array *arr2)
 {
     int i, j, k;
     i = j = k = 0;
@@ -257,8 +255,7 @@ struct array *intersection(struct array *arr1, struct
 {
     int i, j, k;
     i = j = k = 0;
-    struct array *arr3 = (struct array
-                              *)malloc(sizeof(struct array));
+    struct array *arr3 = (struct array *)malloc(sizeof(struct array));
     while (i < arr1->length && j < arr2->length)
     {
         if (arr1->A[i] < arr2->A[j])
@@ -358,3 +355,7 @@ int main()
 //  // insert(&arr, 0, 9);
 //  display(arr);
 // you seee one video of the binarysearch in video
+
+
+
+//lenght is the present element in array

@@ -6,7 +6,7 @@ struct node
     struct node *next;
 
 } *first = NULL, *second = NULL, *third = NULL;
-void create1(int A[], int n)
+void create1(int A[], int n)//create linklist
 {
     int i;
     struct node *t, *last;
@@ -57,7 +57,7 @@ void RDisplay(struct node *p) // recursion display
         printf("%d ", p->data);
     }
 }
-int count(struct node *p)
+int count(struct node *p)//count linklist
 {
     int count = 0;
     while (p)
@@ -103,19 +103,19 @@ int rsum(struct node *p)
 //     }
 //     return max;
 // }
-int rmax(struct node *p)
-{
-    int x = 0;
-    if (p == 0)
-        ;
-    return // INT64_MIN;
-        x = rmax(p->next);
-    if (x > p->data)
-        return x;
-    else
-        return p->data;
-}
-struct node *lsearch(struct node *p, int key)
+// int rmax(struct node *p)
+// {
+//     int x = 0;
+//     if (p == 0)
+//         ;
+//     return // INT64_MIN;
+//         x = rmax(p->next);
+//     if (x > p->data)
+//         return x;
+//     else
+//         return p->data;
+// }
+struct node *lsearch(struct node *p, int key)//element serch karva
 {
     struct node *q;
     while (p != NULL)
@@ -163,7 +163,7 @@ void insert(struct node *p, int index, int x)
         p->next = t;
     }
 }
-void sortinsert(struct node *p, int x)
+void sortinsert(struct node *p, int x)//sorted linklist ma insert karva
 {
     struct node *q, *t = NULL;
     t = (struct node *)malloc(sizeof(struct node));
@@ -190,7 +190,7 @@ void sortinsert(struct node *p, int x)
         }
     }
 }
-int delete(struct node *p, int index)
+int delete(struct node *p, int index)//delete
 {
     struct node *q = NULL;
     int x = -1, i;
@@ -217,7 +217,7 @@ int delete(struct node *p, int index)
         return x;
     }
 }
-int issorted(struct node *p)
+int issorted(struct node *p)//cheking the link it is sorted ??
 {
     int x = -65536;
     while (p != NULL)
@@ -229,7 +229,7 @@ int issorted(struct node *p)
     }
     return 1;
 }
-void removeduplicate(struct node *p)
+void removeduplicate(struct node *p)//remove element
 {
     struct node *q = p->next;
     while (q != NULL)
@@ -251,14 +251,14 @@ int reverse1(struct node *p)
 {
     int *A, i = 0;
     struct node *q = p;
-    A = (int *)malloc(sizeof(int) * count(p));
+    A = (int *)malloc(sizeof(int) * count(p));//arrray create and reverse create array and du=isplay by dicrement of i
     while (q != NULL)
     {
         A[i] = q->data;
         q = q->next;
         i++;
     }
-    q = p;
+    q = p;//in this meaning the p call strating of the linklist
     i--;
     while (q != NULL)
     {
@@ -267,7 +267,7 @@ int reverse1(struct node *p)
         i--;
     }
 }
-void reverse2(struct node *p)
+void reverse2(struct node *p)//it is sliding pointer of the node
 {
     struct node *q = NULL, *r = NULL;
     while (p != NULL)
@@ -275,7 +275,7 @@ void reverse2(struct node *p)
         r = q;
         q = p;
         p = p->next;
-        q->next = r;
+        q->next = r;//pointing to the reverse of the linklist and print thm
     }
     first = q;
 }
@@ -285,12 +285,12 @@ void reverse3(struct node *q, struct node *p)
     if (p)
     {
         reverse3(p, p->next);
-        p->next = q;
+        p->next = q;//this is same of pointing of the linklist
     }
     else
         first = q;
 }
-int merge(struct node *p, struct node *q)
+int merge(struct node *p, struct node *q)//merge two linklist
 {
     struct node *last;
     if (p->data < q->data)
@@ -312,7 +312,7 @@ int merge(struct node *p, struct node *q)
             last->next = p;
             last = p;
             p = p->next;
-            last->next = NULL;
+            last->next = NULL;//becaue we will going into new link list and same liklist it is not dicided that we declear last node is null
         }
         else
         {
@@ -327,31 +327,33 @@ int merge(struct node *p, struct node *q)
     if (q)
         last->next = q;
 }
-int isloop(struct node *f){
-    struct node *p,*q;
-    p=q=f;
-    do{
-        p=p->next;
-        q=q->next;
-        q=q?q->next:q;
-        
-    }while(p && q && p!=q);
-    if(p==q)
-    return 1;
-    else 
-    return 0;
+int isloop(struct node *f)//it is ths type of loop that so the pointer will meet in the lisk list by two 
+{
+    struct node *p, *q;
+    p = q = f;
+    do
+    {
+        p = p->next;
+        q = q->next;
+        q = q ? q->next : q;
+
+    } while (p && q && p != q);
+    if (p == q)
+        return 1; 
+    else
+        return 0;
 }
 int main()
 {
     // struct node *teamp;
-     int A[] = {3, 4, 9, 10, 15};
-     create1(A, 5);
-     struct node *t1,*t2;
-     
-     t1=first->next->next;
-     t2=first->next->next->next->Znext;
-     t2->next=t1;
-     printf("%d\n",isloop(first));
+    int A[] = {3, 4, 9, 10, 15};
+    create1(A, 5);
+    struct node *t1, *t2;
+
+    t1 = first->next->next;
+    t2 = first->next->next->next->next;
+    t2->next = t1;
+    printf("%d\n", isloop(first));
     // int A[] = {10, 20, 40, 50, 60};
     // int B[] = {5, 8, 15, 25, 30, 32};
     // create1(A, 5);
@@ -370,9 +372,9 @@ int main()
     //   printf("%d\n", teamp->data);
     //  sortinsert(first,5);
     //  printf("%d\n", sortinsert(first, 5));//it is not run
-    //display(third);
+    // display(third);
     // RDisplay(first);
-    
+
     return 0;
 }
 // r meaning is recursion it is solved by recursion.
